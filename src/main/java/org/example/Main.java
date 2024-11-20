@@ -1,18 +1,22 @@
 package org.example;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
+        App app = new App();
+        app.run();
+    }
+}
 
-        Scanner sc = new Scanner(System.in);
+class App {
 
-        String path = "src/main/java/org/example/db/wiseSaying";
+    Scanner sc = new Scanner(System.in);
+    String path = "src/main/java/org/example/db/wiseSaying";
+
+    public void run() {
 
         System.out.println("==명언 앱==");
 
@@ -22,21 +26,21 @@ public class Main {
 
             switch (command){
                 case "등록":
-                    create(sc, path);
+                    create();
                     break;
                 case "목록":
-                    read(path);
+                    read();
                     break;
                 case "삭제":
                     System.out.print("(첫 인덱스는 1 입니다)?id= ");
-                    delete(sc, path);
+                    delete();
                     break;
                 case "수정":
                     System.out.print("(첫 인덱스는 1 입니다)?id= ");
-                    update(sc, path);
+                    update();
                     break;
                 case "빌드":
-                    build(path);
+                    build();
                     break;
                 case "종료":
                     sc.close();
@@ -44,27 +48,25 @@ public class Main {
                 default:
                     continue;
             }
-
         }
     }
-
-    public static void create(Scanner sc, String path) {
+    public void create() {
 
         System.out.print("명언 : ");
-        String text = sc.nextLine();
+        String content = sc.nextLine();
 
         System.out.print("작가 : ");
-        String writer = sc.nextLine();
+        String author = sc.nextLine();
 
 
-        int count = lastIdFileRead(path, true);
-        writerFileCreate(path, count, text, writer);
+        int count = lastIdFileRead(true);
+        writerFileCreate(count, content, author);
 
         System.out.println(count + "번 명언이 등록되었습니다.");
 
     }
 
-    public static int lastIdFileRead(String path, Boolean createBool) {
+    public int lastIdFileRead(Boolean createBool) {
         try {
 
             String lastIdPath = path + "/lastId.txt";
@@ -101,7 +103,7 @@ public class Main {
         }
     }
 
-    public static void writerFileCreate(String path, int count, String text, String writer) {
+    public void writerFileCreate(int count, String content, String author) {
         try {
 
             String writerFilePath = path + "/" + count + ".json";
@@ -111,7 +113,7 @@ public class Main {
             file.createNewFile();
 
             try (FileWriter filewriter = new FileWriter(file)) {
-                String jsonString = String.format("{\"id\":\"%d\",\"content\":\"%s\",\"author\":\"%s\"}", count, text, writer);
+                String jsonString = String.format("{\"id\":\"%d\",\"content\":\"%s\",\"author\":\"%s\"}", count, content, author);
                 filewriter.write(jsonString);
             }
 
@@ -120,11 +122,11 @@ public class Main {
         }
     }
 
-    public static void read(String path){
+    public void read(){
 
         try {
 
-            int count = lastIdFileRead(path,false);
+            int count = lastIdFileRead(false);
             BufferedReader reader = null;
 
             if(count > 0){
@@ -153,7 +155,7 @@ public class Main {
         }
     }
 
-    public static void delete(Scanner sc, String path){
+    public void delete(){
 
         int index = sc.nextInt(); // Integer.ParseInt(sc.nextLine()); <- 사용시 다음 행 X
         sc.nextLine(); // enter 삭제
@@ -175,7 +177,7 @@ public class Main {
     }
 
 
-    public static void update(Scanner sc, String path){
+    public void update(){
 
         try {
             int index = sc.nextInt(); // Integer.ParseInt(sc.nextLine()); <- 사용시 다음 행 X
@@ -195,13 +197,13 @@ public class Main {
 
                 System.out.println("명언(기존) : "+ arr[3]);
                 System.out.print("명언 : ");
-                String text = sc.nextLine();
+                String content = sc.nextLine();
 
                 System.out.println("작가(기존) : "+ arr[5]);
                 System.out.print("작가 : ");
-                String writer = sc.nextLine();
+                String author = sc.nextLine();
 
-                writerFileCreate(writerFilePath, index, text, writer);
+                writerFileCreate(index, content, author);
             }
 
 
@@ -211,10 +213,10 @@ public class Main {
 
     }
 
-    public static void build(String path) {
+    public void build() {
         try {
 
-            int count = lastIdFileRead(path, false);
+            int count = lastIdFileRead(false);
             if (count<1){
                 System.out.println("명언이 존재하지 않습니다.");
                 return;
@@ -253,7 +255,6 @@ public class Main {
             }
             buildString += "]";
 
-
             reader = new BufferedReader(new FileReader(dataJsonFile));
             try (FileWriter filewriter = new FileWriter(dataJsonFile)) {
                 filewriter.write(buildString);
@@ -264,7 +265,6 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-
 }
 
 

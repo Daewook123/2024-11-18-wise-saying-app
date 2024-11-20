@@ -7,8 +7,7 @@
     <list default="true" id="cc410492-f9a6-4206-b0cf-337ae5e22394" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Writer.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +84,11 @@
     &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="graalvm-ce-21" />
@@ -138,7 +142,8 @@
       <workItem from="1731978376597" duration="46000" />
       <workItem from="1731978716721" duration="5619000" />
       <workItem from="1731993178548" duration="16782000" />
-      <workItem from="1732060014063" duration="3561000" />
+      <workItem from="1732060014063" duration="4506000" />
+      <workItem from="1732083819143" duration="1370000" />
     </task>
     <servers />
   </component>
