@@ -35,6 +35,9 @@ public class Main {
                     System.out.print("(첫 인덱스는 1 입니다)?id= ");
                     update(sc, path);
                     break;
+                case "빌드":
+                    build(path);
+                    break;
                 case "종료":
                     sc.close();
                     return;
@@ -53,18 +56,18 @@ public class Main {
         System.out.print("작가 : ");
         String writer = sc.nextLine();
 
-        String lastIdPath = path + "/lastId.txt";
-        int count = lastIdFileRead(lastIdPath);
 
-        String writerFilePath = path + "/" + count + ".json";
-        writerFileCreate(writerFilePath, count, text, writer);
+        int count = lastIdFileRead(path, true);
+        writerFileCreate(path, count, text, writer);
 
         System.out.println(count + "번 명언이 등록되었습니다.");
 
     }
 
-    public static int lastIdFileRead(String lastIdPath) {
+    public static int lastIdFileRead(String path, Boolean createBool) {
         try {
+
+            String lastIdPath = path + "/lastId.txt";
 
             File file = new File(lastIdPath);
             BufferedReader reader = null;
@@ -80,13 +83,17 @@ public class Main {
             }
 
             reader = new BufferedReader(new FileReader(file));
-            int count = Integer.parseInt(reader.readLine()) + 1;
+            int count = Integer.parseInt(reader.readLine());
 
-            try (FileWriter filewriter = new FileWriter(file)) {
-                filewriter.write(String.valueOf(count));
+            if(createBool){
+                try (FileWriter filewriter = new FileWriter(file)) {
+                    count += 1;
+                    filewriter.write(String.valueOf(count));
+                    return count;
+                }
+            }else{
+                return count;
             }
-
-            return count;
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -94,9 +101,10 @@ public class Main {
         }
     }
 
-    public static void writerFileCreate(String writerFilePath, int count, String text, String writer) {
+    public static void writerFileCreate(String path, int count, String text, String writer) {
         try {
 
+            String writerFilePath = path + "/" + count + ".json";
             File file = new File(writerFilePath);
 
             file.getParentFile().mkdirs();
@@ -115,21 +123,17 @@ public class Main {
     public static void read(String path){
 
         try {
-            String lastIdPath = path + "/lastId.txt";
 
-            File lastIdfile = new File(lastIdPath);
+            int count = lastIdFileRead(path,false);
             BufferedReader reader = null;
 
-            if(!lastIdfile.exists()) {
+            if(count > 0){
+                System.out.println("번호 / 작가 / 명언");
+                System.out.println("----------------------");
+            }else{
                 System.out.println("명언이 존재하지 않습니다.");
                 return;
             }
-
-            reader = new BufferedReader(new FileReader(lastIdfile));
-            int count = Integer.parseInt(reader.readLine());
-
-            System.out.println("번호 / 작가 / 명언");
-            System.out.println("----------------------");
 
             for(int i = 1; i<=count; i++){
                 String writerFilePath = path + "/" + i + ".json";
@@ -143,7 +147,6 @@ public class Main {
                     System.out.println(arr[1] + " / " + arr[3] + " / " + arr[5]);
                 }
             }
-
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -206,6 +209,60 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    public static void build(String path) {
+        try {
+
+            int count = lastIdFileRead(path, false);
+            if (count<1){
+                System.out.println("명언이 존재하지 않습니다.");
+                return;
+            }
+
+            String dataJsonPath= path+"/"+"data.json";
+
+            File dataJsonFile = new File(dataJsonPath);
+            BufferedReader reader = null;
+
+            if (!dataJsonFile.exists()) {
+                dataJsonFile.getParentFile().mkdirs();
+                dataJsonFile.createNewFile();
+
+                try (FileWriter filewriter = new FileWriter(dataJsonFile)) {
+                    filewriter.write("");
+                }
+                dataJsonFile = new File(dataJsonPath);
+            }
+
+            //data.json 작성
+            String buildString = "[";
+            for(int i = 1; i<=count; i++){
+                String writerFilePath = path + "/" + i + ".json";
+                File writerFile = new File(writerFilePath);
+                if(!writerFile.exists()){
+                    continue;
+                }else {
+                    reader = new BufferedReader(new FileReader(writerFile));
+                    if(i == count){
+                        buildString += reader.readLine();
+                    }else{
+                        buildString += reader.readLine()+ ",";
+                    }
+                }
+            }
+            buildString += "]";
+
+
+            reader = new BufferedReader(new FileReader(dataJsonFile));
+            try (FileWriter filewriter = new FileWriter(dataJsonFile)) {
+                filewriter.write(buildString);
+                System.out.println("data.json 파일의 내용이 갱신되었습니다.");
+            }
+
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }

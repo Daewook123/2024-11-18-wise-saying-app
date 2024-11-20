@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cc410492-f9a6-4206-b0cf-337ae5e22394" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/3.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/3.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,32 +59,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Gradle.2024-11-18-wise-saying-app [:org.example.Main.main()].executor": "Run",
-    "Gradle.2024-11-18-wise-saying-app 빌드.executor": "Run",
-    "Gradle.2024-11-18-wise-saying-app::Users:daewook:Desktop:백엔드 데브코스 :JAVA:2024-11-18-wise-saying-app [:org.example.Main.main()].executor": "Run",
-    "Notification.DisplayName-DoNotAsk-GitHub Copilot": "GitHub Copilot",
-    "Notification.DoNotAsk-GitHub Copilot": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/daewook/Desktop/BEdevcourse/JAVA/2024-11-18-wise-saying-app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/daewook/Desktop/백엔드 데브코스 /JAVA/2024-11-18-wise-saying-app/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.40229884",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true",
-    "애플리케이션.Main.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.2024-11-18-wise-saying-app [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.2024-11-18-wise-saying-app 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.2024-11-18-wise-saying-app::Users:daewook:Desktop:백엔드 데브코스 :JAVA:2024-11-18-wise-saying-app [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-GitHub Copilot&quot;: &quot;GitHub Copilot&quot;,
+    &quot;Notification.DoNotAsk-GitHub Copilot&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/daewook/Desktop/BEdevcourse/JAVA/2024-11-18-wise-saying-app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/daewook/Desktop/백엔드 데브코스 /JAVA/2024-11-18-wise-saying-app/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.40229884&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="graalvm-ce-21" />
@@ -137,7 +137,8 @@
       <workItem from="1731977344554" duration="943000" />
       <workItem from="1731978376597" duration="46000" />
       <workItem from="1731978716721" duration="5619000" />
-      <workItem from="1731993178548" duration="16075000" />
+      <workItem from="1731993178548" duration="16782000" />
+      <workItem from="1732060014063" duration="3561000" />
     </task>
     <servers />
   </component>
