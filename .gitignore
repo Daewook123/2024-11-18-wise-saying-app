@@ -8,7 +8,7 @@
 /src/main/resources/
 /src/test/resources/
 
-config.properties
+*.properties
 
 # User-specific stuff
 .idea/**/workspace.xml

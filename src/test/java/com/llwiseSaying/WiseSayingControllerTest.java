@@ -2,21 +2,25 @@ package com.llwiseSaying;
 
 import com.llwiseSaying.conrtoller.WiseSayingController;
 import com.llwiseSaying.sevice.WiseSayingService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.*;
 
 class WiseSayingControllerTest {
 
+
+    @BeforeEach
+    public void setUp() {
+        AppConfig appConfig = AppConfig.getInstance("test");
+    }
+
     @DisplayName("등록 테스트")
     @Test
     void registerTest() throws IOException {
 
         // given
+
         ByteArrayOutputStream out = TestUtil.setOutToByteArray();
         WiseSayingController wiseSayingController = new WiseSayingController(TestUtil.genScanner("""
                 등록
@@ -27,6 +31,8 @@ class WiseSayingControllerTest {
 
         // when
         wiseSayingController.run();
+
+
 
         // then
         String msg = out.toString().trim();

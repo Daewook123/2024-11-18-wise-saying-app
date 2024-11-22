@@ -1,5 +1,7 @@
 package com.llwiseSaying.repository;
 
+
+import com.llwiseSaying.AppConfig;
 import com.llwiseSaying.model.WiseSaying;
 
 import java.io.*;
@@ -9,9 +11,17 @@ import java.util.List;
 public class WiseSayingRepository {
 
     List<WiseSaying> wiseSayingList = new ArrayList<>();
+    AppConfig appConfig = AppConfig.getInstance("main");
 
-    String lastIdPath = "src/main/resources/db/wiseSaying/lastId.txt";
-    String dataJsonPath = "src/main/resources/db/wiseSaying/data.json";
+    String lastIdPath;
+    String dataJsonPath;
+    String wiseSayingPath;
+
+    public WiseSayingRepository(){
+        this.lastIdPath = appConfig.getLastIdFilePath();
+        this.dataJsonPath = appConfig.getDataJsonFilePath();
+        this.wiseSayingPath = appConfig.getWiseSayingPath();
+    }
 
     public int save(String content, String author) throws IOException {
         int id = lastIdReadAndUpdate(true);
@@ -24,7 +34,7 @@ public class WiseSayingRepository {
 
     public boolean delete(int id) {
 
-        String filePath = "src/main/resources/db/wiseSaying/" + id + ".json";
+        String filePath = wiseSayingPath + id + ".json";
         boolean deleted = false;
         File file = new File(filePath);
 
@@ -67,7 +77,7 @@ public class WiseSayingRepository {
 
 
 public String[] findByWiseSaying(int id) throws IOException {
-    String filePath = "src/main/resources/db/wiseSaying/" + id + ".json";
+    String filePath = wiseSayingPath + id + ".json";
 
     File file = new File(filePath);
     BufferedReader reader = null;
@@ -90,7 +100,7 @@ public List<String[]> findByAll() throws IOException {
 
     if (id > 0) {
         for (int i = id; i > 0; i--) {
-            String filePath = "src/main/resources/db/wiseSaying/" + i + ".json";
+            String filePath = wiseSayingPath + i + ".json";
             File file = new File(filePath);
             if (file.exists()) {
                 reader = new BufferedReader(new FileReader(file));
@@ -150,7 +160,7 @@ public int lastIdReadAndUpdate(boolean Y_N) throws IOException {
 
 public void wiseSayingSave(int id, String content, String author) throws IOException {
 
-    String filePath = "src/main/resources/db/wiseSaying/" + id + ".json";
+    String filePath = wiseSayingPath + id + ".json";
 
     String jsonString = String.format("{\"id\":\"%d\",\"content\":\"%s\",\"author\":\"%s\"}", id, content, author);
 
