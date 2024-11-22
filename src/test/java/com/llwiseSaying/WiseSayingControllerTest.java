@@ -12,8 +12,6 @@ import java.io.*;
 
 class WiseSayingControllerTest {
 
-
-
     @DisplayName("등록 테스트")
     @Test
     void registerTest() throws IOException {

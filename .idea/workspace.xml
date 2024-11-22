@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc410492-f9a6-4206-b0cf-337ae5e22394" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/conrtoller/WiseSayingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/conrtoller/WiseSayingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/repository/WiseSayingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/repository/WiseSayingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/sevice/WiseSayingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/sevice/WiseSayingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/lastId.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/lastId.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/llwiseSaying/WiseSayingControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/llwiseSaying/WiseSayingControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +90,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/Users/daewook/Desktop/백엔드 데브코스 /JAVA/2024-11-18-wise-saying-app/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Problems",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.40229884",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
@@ -241,7 +236,7 @@
       <workItem from="1732083819143" duration="8880000" />
       <workItem from="1732159837373" duration="13536000" />
       <workItem from="1732203745292" duration="563000" />
-      <workItem from="1732242358194" duration="11314000" />
+      <workItem from="1732242358194" duration="13590000" />
     </task>
     <servers />
   </component>
