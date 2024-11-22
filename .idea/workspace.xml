@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cc410492-f9a6-4206-b0cf-337ae5e22394" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/db/wiseSaying/lastId.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/lastId.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/conrtoller/WiseSayingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/conrtoller/WiseSayingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/repository/WiseSayingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/repository/WiseSayingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/sevice/WiseSayingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/llwiseSaying/sevice/WiseSayingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/lastId.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/wiseSaying/lastId.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +45,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -62,33 +64,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.llwiseSaying.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.2024-11-18-wise-saying-app [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.2024-11-18-wise-saying-app 빌드.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.2024-11-18-wise-saying-app::Users:daewook:Desktop:백엔드 데브코스 :JAVA:2024-11-18-wise-saying-app [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-GitHub Copilot&quot;: &quot;GitHub Copilot&quot;,
-    &quot;Notification.DoNotAsk-GitHub Copilot&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/daewook/Desktop/BEdevcourse/JAVA/2024-11-18-wise-saying-app&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/daewook/Desktop/백엔드 데브코스 /JAVA/2024-11-18-wise-saying-app/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.40229884&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
-    &quot;애플리케이션.Main.executor&quot;: &quot;Run&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.com.llwiseSaying.Main.executor": "Run",
+    "Gradle.2024-11-18-wise-saying-app [:org.example.Main.main()].executor": "Run",
+    "Gradle.2024-11-18-wise-saying-app 빌드.executor": "Run",
+    "Gradle.2024-11-18-wise-saying-app::Users:daewook:Desktop:백엔드 데브코스 :JAVA:2024-11-18-wise-saying-app [:org.example.Main.main()].executor": "Run",
+    "JUnit.WiseSayingControllerTest.buildFailTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.buildTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.deleteFailTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.deleteTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.printTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.registerTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.searchFailTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.searchTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.updateFailTest.executor": "Run",
+    "JUnit.WiseSayingControllerTest.updateTest.executor": "Run",
+    "Notification.DisplayName-DoNotAsk-GitHub Copilot": "GitHub Copilot",
+    "Notification.DoNotAsk-GitHub Copilot": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/daewook/Desktop/BEdevcourse/JAVA/2024-11-18-wise-saying-app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/Users/daewook/Desktop/백엔드 데브코스 /JAVA/2024-11-18-wise-saying-app/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.40229884",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true",
+    "애플리케이션.Main.executor": "Run"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.example" />
@@ -96,16 +110,21 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/db" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.llwiseSaying.conrtoller" />
+      <recent name="com.llwiseSaying" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="com.llwiseSaying.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="graalvm-ce-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.llwiseSaying.Main" />
       <module name="2024-11-18-wise-saying-app.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="com.llwiseSaying.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,9 +132,77 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WiseSayingControllerTest.buildFailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2024-11-18-wise-saying-app.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.llwiseSaying.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.llwiseSaying" />
+      <option name="MAIN_CLASS_NAME" value="com.llwiseSaying.WiseSayingControllerTest" />
+      <option name="METHOD_NAME" value="buildFailTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WiseSayingControllerTest.buildTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2024-11-18-wise-saying-app.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.llwiseSaying.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.llwiseSaying" />
+      <option name="MAIN_CLASS_NAME" value="com.llwiseSaying.WiseSayingControllerTest" />
+      <option name="METHOD_NAME" value="buildTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WiseSayingControllerTest.deleteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2024-11-18-wise-saying-app.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.llwiseSaying.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.llwiseSaying" />
+      <option name="MAIN_CLASS_NAME" value="com.llwiseSaying.WiseSayingControllerTest" />
+      <option name="METHOD_NAME" value="deleteTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WiseSayingControllerTest.updateFailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2024-11-18-wise-saying-app.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.llwiseSaying.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.llwiseSaying" />
+      <option name="MAIN_CLASS_NAME" value="com.llwiseSaying.WiseSayingControllerTest" />
+      <option name="METHOD_NAME" value="updateFailTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.llwiseSaying.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.WiseSayingControllerTest.buildFailTest" />
+        <item itemvalue="JUnit.WiseSayingControllerTest.buildTest" />
+        <item itemvalue="JUnit.WiseSayingControllerTest.updateFailTest" />
+        <item itemvalue="JUnit.WiseSayingControllerTest.deleteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +239,9 @@
       <workItem from="1731993178548" duration="16782000" />
       <workItem from="1732060014063" duration="4506000" />
       <workItem from="1732083819143" duration="8880000" />
-      <workItem from="1732159837373" duration="11294000" />
+      <workItem from="1732159837373" duration="13536000" />
+      <workItem from="1732203745292" duration="563000" />
+      <workItem from="1732242358194" duration="11314000" />
     </task>
     <servers />
   </component>

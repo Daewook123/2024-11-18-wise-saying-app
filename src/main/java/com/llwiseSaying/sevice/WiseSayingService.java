@@ -17,7 +17,7 @@ public class WiseSayingService {
         return wiseSayingRepository.save(content, author);
     }
 
-    public List<String> searchAllWiseSaying() throws IOException {
+    public List<String[]> searchAllWiseSaying() throws IOException {
         return wiseSayingRepository.findByAll();
     }
 

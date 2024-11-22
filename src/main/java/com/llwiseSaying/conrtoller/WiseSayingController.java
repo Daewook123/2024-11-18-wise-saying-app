@@ -9,13 +9,17 @@ import java.util.Scanner;
 public class WiseSayingController {
 
     private final WiseSayingService wiseSayingService;
+    private Scanner sc;
 
     public WiseSayingController() {
         wiseSayingService = new WiseSayingService();
+        this.sc = new Scanner(System.in);
     }
-    Scanner sc = new Scanner(System.in);
 
-
+    public WiseSayingController(Scanner sc) {
+        wiseSayingService = new WiseSayingService();
+        this.sc = sc;
+    }
 
     public void run() throws IOException {
 
@@ -57,14 +61,14 @@ public class WiseSayingController {
     }
     public void searchCommand() throws IOException {
 
-        List<String> list = wiseSayingService.searchAllWiseSaying();
+        List<String[]> list = wiseSayingService.searchAllWiseSaying();
 
         if (!list.isEmpty()) {
             System.out.println("번호 / 작가 / 명언");
             System.out.println("----------------------");
 
-            for(String text : list){
-                System.out.println(text);
+            for(String[] text : list){
+                System.out.println(text[0] + " / " + text[1] + " / " + text[2]);
             }
         } else {
             System.out.println("명언이 존재하지 않습니다.");
@@ -81,7 +85,7 @@ public class WiseSayingController {
         if(status) {
             System.out.println(id + "번 명언이 삭제되었습니다.");
         }else{
-            System.out.println(id+"번 명언 삭제를 실패하였습니다:");
+            System.out.println(id+"번 명언 삭제를 실패하였습니다.");
         }
 
     }

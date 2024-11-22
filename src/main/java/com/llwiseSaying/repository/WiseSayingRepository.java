@@ -42,36 +42,27 @@ public class WiseSayingRepository {
 
     public boolean build() throws IOException {
 
-        int id = lastIdReadAndUpdate(false);
+        List<String[]> list = findByAll();
 
-        if(id < 1){
+        if(list.isEmpty()){
             return false;
         }else{
-            BufferedReader reader = null;
-
             //data.json 작성
-            String buildString = "[";
-            for (int i = 1; i <= id; i++) {
-                String filePath = "src/main/resources/db/wiseSaying/" + i + ".json";
-                File file = new File(filePath);
-                if (file.exists()) {
-                    reader = new BufferedReader(new FileReader(file));
-                    if (i == id) {
-                        buildString += reader.readLine();
-                    } else {
-                        buildString += reader.readLine() + ",";
-                    }
-                } else {
-                    continue;
+            String jsonString = "[";
+            for (int i= 0; i<list.size(); i++) {
+                jsonString += "{\"id\": \""+ list.get(i)[0]+ "\", \"content\": \"" + list.get(i)[1] + "\",\"author\": \"" + list.get(i)[2] + "\"}, ";
+                if(i == list.size()-1){
+                    jsonString += "{\"id\": \""+ list.get(i)[0]+ "\", \"content\": \"" + list.get(i)[1] + "\",\"author\": \"" + list.get(i)[2] + "\"}";
                 }
             }
-            buildString += "]";
+            jsonString += "]";
 
             try (FileWriter filewriter = new FileWriter(dataJsonPath)) {
-                filewriter.write(buildString);
+                filewriter.write(jsonString);
             }
+
+            return true;
         }
-        return true;
     }
 
 
@@ -91,10 +82,10 @@ public String[] findByWiseSaying(int id) throws IOException {
     }
 }
 
-public List<String> findByAll() throws IOException {
+public List<String[]> findByAll() throws IOException {
 
     int id = lastIdReadAndUpdate(false);
-    List<String> list = new ArrayList<>();
+    List<String[]> list = new ArrayList<>();
     BufferedReader reader = null;
 
     if (id > 0) {
@@ -105,7 +96,8 @@ public List<String> findByAll() throws IOException {
                 reader = new BufferedReader(new FileReader(file));
                 String jsonstring = reader.readLine().replace("{", "").replace("\"", "").replace("}", "");
                 String[] arr = jsonstring.split(":|,");
-                list.add(arr[1] + " / " + arr[3] + " / " + arr[5]);
+                list.add(new String[]{arr[1], arr[3], arr[5]});
+
             } else {
                 continue;
             }
