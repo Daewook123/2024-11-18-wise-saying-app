@@ -3,8 +3,7 @@ package com.llwiseSaying.conrtoller;
 import com.llwiseSaying.sevice.WiseSayingService;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class WiseSayingController {
 
@@ -38,12 +37,12 @@ public class WiseSayingController {
         }
     }
     public void handleCommand(String command) throws IOException {
-        switch (command){
-            case "등록": registerCommand();  break;
-            case "목록": searchCommand();    break;
-            case "삭제": deleteCommand();    break;
-            case "수정": updateCommand();    break;
-            case "빌드": buildCommand();     break;
+        switch (command.substring(0,2)){
+            case "등록": registerCommand();       break;
+            case "목록": searchCommand(command);  break;
+            case "삭제": deleteCommand();         break;
+            case "수정": updateCommand();         break;
+            case "빌드": buildCommand();          break;
         }
     }
 
@@ -59,48 +58,74 @@ public class WiseSayingController {
         System.out.println(id + "번 명언이 등록되었습니다.");
     }
 
-    public void searchCommand() throws IOException {
+    public void searchCommand(String command) throws IOException {
         List<String[]> list = wiseSayingService.searchAllWiseSaying();
-        System.out.print("검색 타입을 입력하세요(All / Keyword) : ");
-        String searchType = sc.nextLine();
 
-        if (list.isEmpty()) {
-            System.out.println("명언이 존재하지 않습니다.");
-            return;
-        }
 
-        if (searchType.equals("All")) {
-            printWiseSayings(list);
-        } else if (searchType.equals("Keyword")) {
-            System.out.print("keywordType(content/author) = ");
-            String keywordType = sc.nextLine();
-            System.out.print("keyword = ");
-            String keyword = sc.nextLine();
+        if(command.equals("목록")) {
+            if (list.isEmpty()) {
+                System.out.println("명언이 존재하지 않습니다.");
+                return;
+            } else {
+                pagingPrintWiseSaying(1, list);
+            }
+        }else {
+            Map<String, String> params = new HashMap<>();
+            String query = command.split("\\?")[1];
 
-            printFilteredWiseSayings(list, keywordType, keyword);
-        } else {
-            System.out.println("잘못된 검색 타입입니다.");
-        }
-    }
-
-    private void printWiseSayings(List<String[]> list) {
-        System.out.println("번호 / 작가 / 명언");
-        System.out.println("----------------------");
-        for (String[] text : list) {
-            System.out.println(text[0] + " / " + text[1] + " / " + text[2]);
-        }
-    }
-
-    private void printFilteredWiseSayings(List<String[]> list, String keywordType, String keyword) {
-        System.out.println("번호 / 작가 / 명언");
-        System.out.println("----------------------");
-
-        for (String[] text : list) {
-            if ((keywordType.equals("content") && text[1].contains(keyword)) ||
-                    (keywordType.equals("author") && text[2].contains(keyword))) {
-                System.out.println(text[0] + " / " + text[1] + " / " + text[2]);
+            for (String param : query.split("&")) {
+                String[] keyValue = param.split("=");
+                if (keyValue.length == 2) {
+                    params.put(keyValue[0], keyValue[1]);
+                }
+            }
+            if(params.size()==1){
+                pagingPrintWiseSaying(Integer.parseInt(params.get("page")),list);
+            }else if(params.size()==2){
+                pagingPrintWiseSaying(1,
+                        filterWiseSayings(list, params.get("keywordType"), params.get("keyword")));
+            }
+            else if(params.size()==3){
+                pagingPrintWiseSaying(Integer.parseInt(params.get("page")),
+                        filterWiseSayings(list, params.get("keywordType"), params.get("keyword")));
             }
         }
+
+    }
+
+    private void pagingPrintWiseSaying(int page, List<String[]> list){
+        int totalPages = (list.size()%5==0) ? list.size()/5 : list.size()/5+1;
+
+        if(totalPages<page){
+            System.out.println("해당 페이지는 존재하지 않습니다.");
+        }else{
+            int index = page*5;
+            System.out.println("번호 / 작가 / 명언");
+            System.out.println("----------------------");
+
+            for(int i =index-5; i<index; i++){
+                System.out.println(list.get(i)[0] + " / " + list.get(i)[1] + " / " + list.get(i)[2]);
+                if(list.size()==i+1) break;
+            }
+        }
+
+        if(page < totalPages){
+            System.out.printf("페이지 : [%d] / %d\n", page, page+1);
+        }else{
+            System.out.printf("페이지 : %d / [%d]\n", page-1, totalPages);
+        }
+    }
+
+    private List<String[]> filterWiseSayings(List<String[]> list, String keywordType, String keyword) {
+        List<String[]> resultlist = new ArrayList<>();
+
+        for (String[] text : list) {
+            if ((keywordType.equals("author") && text[1].contains(keyword))||
+                    (keywordType.equals("content") && text[2].contains(keyword))) {
+                resultlist.add(new String[]{text[0], text[1], text[2]});
+            }
+        }
+        return resultlist;
     }
 
     public void deleteCommand(){

@@ -113,7 +113,6 @@ public List<String[]> findByAll() throws IOException {
             }
         }
     }
-
     return list;
 }
 

@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         WiseSayingController controller = new WiseSayingController();
-                controller.run();
+        controller.run();
     }
 }
 
