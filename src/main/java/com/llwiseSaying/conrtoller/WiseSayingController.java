@@ -57,23 +57,50 @@ public class WiseSayingController {
 
         int id = wiseSayingService.registerWiseSaying(content,author);
         System.out.println(id + "번 명언이 등록되었습니다.");
-
     }
+
     public void searchCommand() throws IOException {
-
         List<String[]> list = wiseSayingService.searchAllWiseSaying();
+        System.out.print("검색 타입을 입력하세요(All / Keyword) : ");
+        String searchType = sc.nextLine();
 
-        if (!list.isEmpty()) {
-            System.out.println("번호 / 작가 / 명언");
-            System.out.println("----------------------");
-
-            for(String[] text : list){
-                System.out.println(text[0] + " / " + text[1] + " / " + text[2]);
-            }
-        } else {
+        if (list.isEmpty()) {
             System.out.println("명언이 존재하지 않습니다.");
+            return;
         }
 
+        if (searchType.equals("All")) {
+            printWiseSayings(list);
+        } else if (searchType.equals("Keyword")) {
+            System.out.print("keywordType(content/author) = ");
+            String keywordType = sc.nextLine();
+            System.out.print("keyword = ");
+            String keyword = sc.nextLine();
+
+            printFilteredWiseSayings(list, keywordType, keyword);
+        } else {
+            System.out.println("잘못된 검색 타입입니다.");
+        }
+    }
+
+    private void printWiseSayings(List<String[]> list) {
+        System.out.println("번호 / 작가 / 명언");
+        System.out.println("----------------------");
+        for (String[] text : list) {
+            System.out.println(text[0] + " / " + text[1] + " / " + text[2]);
+        }
+    }
+
+    private void printFilteredWiseSayings(List<String[]> list, String keywordType, String keyword) {
+        System.out.println("번호 / 작가 / 명언");
+        System.out.println("----------------------");
+
+        for (String[] text : list) {
+            if ((keywordType.equals("content") && text[1].contains(keyword)) ||
+                    (keywordType.equals("author") && text[2].contains(keyword))) {
+                System.out.println(text[0] + " / " + text[1] + " / " + text[2]);
+            }
+        }
     }
 
     public void deleteCommand(){

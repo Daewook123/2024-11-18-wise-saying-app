@@ -24,8 +24,8 @@ class WiseSayingControllerTest {
         ByteArrayOutputStream out = TestUtil.setOutToByteArray();
         WiseSayingController wiseSayingController = new WiseSayingController(TestUtil.genScanner("""
                 등록
-                현재를 사랑하라.
-                작자미상
+                오늘 점심 뭐 먹지.
+                대욱
                 종료
                 """));
 
@@ -41,13 +41,14 @@ class WiseSayingControllerTest {
         System.out.println(msg);
     }
 
-    @DisplayName("목록 테스트")
+    @DisplayName("목록(All) 테스트")
     @Test
-    void searchTest() throws IOException {
+    void searchAllTest() throws IOException {
         // given
         ByteArrayOutputStream out = TestUtil.setOutToByteArray();
         WiseSayingController wiseSayingController = new WiseSayingController(TestUtil.genScanner("""
                 목록
+                All
                 종료
                 """));
 
@@ -59,6 +60,68 @@ class WiseSayingControllerTest {
         assertTrue(msg.contains("""
                 번호 / 작가 / 명언
                 ----------------------
+                5 / 오늘 점심 뭐 먹지. / 대욱
+                4 / 미래를 생각하라. / 대욱
+                3 / 과거를 사랑하라. / 작자미상2
+                2 / 현재를 사랑하라. / 작자미상
+                1 / 현재를 사랑하라. / 작자미상
+                """));
+        TestUtil.clearSetOutToByteArray(out);
+        System.out.println(msg);
+    }
+
+    @DisplayName("목록(keyword : content) 테스트")
+    @Test
+    void searchContentTest() throws IOException {
+        // given
+        ByteArrayOutputStream out = TestUtil.setOutToByteArray();
+        WiseSayingController wiseSayingController = new WiseSayingController(TestUtil.genScanner("""
+                목록
+                Keyword
+                content
+                사랑
+                종료
+                """));
+
+        // when
+        wiseSayingController.run();
+
+        // then
+        String msg = out.toString().trim();
+        assertTrue(msg.contains("""
+                번호 / 작가 / 명언
+                ----------------------
+                3 / 과거를 사랑하라. / 작자미상2
+                2 / 현재를 사랑하라. / 작자미상
+                1 / 현재를 사랑하라. / 작자미상
+                """));
+        TestUtil.clearSetOutToByteArray(out);
+        System.out.println(msg);
+    }
+
+    @DisplayName("목록(keyword : author) 테스트")
+    @Test
+    void searchAuthorTest() throws IOException {
+        // given
+        ByteArrayOutputStream out = TestUtil.setOutToByteArray();
+        WiseSayingController wiseSayingController = new WiseSayingController(TestUtil.genScanner("""
+                목록
+                Keyword
+                author
+                대욱
+                종료
+                """));
+
+        // when
+        wiseSayingController.run();
+
+        // then
+        String msg = out.toString().trim();
+        assertTrue(msg.contains("""
+                번호 / 작가 / 명언
+                ----------------------
+                5 / 오늘 점심 뭐 먹지. / 대욱
+                4 / 미래를 생각하라. / 대욱
                 """));
         TestUtil.clearSetOutToByteArray(out);
         System.out.println(msg);
